@@ -59,3 +59,56 @@ Permite **buscar** por nombre, **filtrar** por continente y rangos, **ordenar** 
 **Windows (PowerShell)**
 ```powershell
 python -m src.cli --dataset ".\data\paises.csv"
+```
+
+**Linux/Mac**
+```bash
+python3 -m src.cli --dataset "./data/paises.csv"
+```
+
+> Si tu CSV viene de Excel con BOM, podés agregar: `--encoding utf-8-sig`.
+
+---
+
+## 📄 Formato del CSV
+```csv
+nombre,poblacion,superficie,continente
+Argentina,45376763,2780400,América
+Chile,19116209,756102,América
+España,47351567,505990,Europa
+Nigeria,206139589,923768,África
+```
+- `poblacion >= 0` · `superficie > 0` · separador **coma** · encoding **UTF-8**.
+
+---
+
+## 🗺️ Flujo
+```
+INICIO
+  ↓
+Cargar CSV → validar → construir lista de países
+  ↓
+MENÚ (Buscar / Filtrar / Ordenar / Estadísticas / Agregar-Actualizar)
+  ↓
+Mostrar resultados → Volver al MENÚ → Salir
+```
+
+---
+
+## 🗂️ Estructura del proyecto
+```
+tp-integrador/
+├─ src/
+│  ├─ core.py        # búsquedas, filtros, ordenamientos, estadísticas
+│  ├─ io_utils.py    # lectura CSV, parsing y validaciones
+│  └─ cli.py         # interfaz de consola y orquestación
+├─ data/
+│  └─ paises.csv     # dataset de ejemplo
+└─ README.md
+```
+
+---
+
+## 👥 Integrantes
+- Apellido, Nombre — Legajo  
+- Apellido, Nombre — Legajo
