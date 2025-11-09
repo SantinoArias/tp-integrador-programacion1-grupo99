@@ -30,10 +30,9 @@ Aplicación de **consola** hecha en **Python 3** que opera sobre un dataset de p
 Permite **buscar** por nombre, **filtrar** por continente y rangos, **ordenar** por varios criterios y obtener **estadísticas**.
 
 ### Funcionalidades (resumen)
-| 🔎 Búsqueda | 🔧 Filtros | ↕ Ordenamiento | 📊 Estadísticas | ✅ Validaciones | 🧪 (Opc.) Tests |
+| 🔎 Búsqueda | 🔧 Filtros | ↕ Ordenamiento | 📊 Estadísticas | ✅ Validaciones |
 |---|---|---|---|---|---|
-| Exacta/parcial (case-insensitive) | Continente · Población · Superficie | Nombre · Población · Superficie (asc/desc) | Mayor/menor · Promedios · Conteo por continente | Columnas, tipos y rangos con mensajes claros | `pytest` para lógica y CSV |
-
+| Exacta/parcial (case-insensitive) | Continente · Población · Superficie | Nombre · Población · Superficie (asc/desc) | Mayor/menor · Promedios · Conteo por continente | Columnas, tipos y rangos con mensajes claros | `
 ---
 
 ## ⚙️ Cómo funciona
