@@ -1,31 +1,55 @@
-# TP Integrador – Programación 1
-**Gestión de Países en Python (app de consola)**
+<div align="center">
 
-## ¿Qué es?
-Una aplicación de **consola** hecha en **Python 3** que carga un **dataset de países** desde un archivo **CSV** y permite:
-- **Buscar** por nombre (coincidencia exacta o parcial).
-- **Filtrar** por **continente** y por rangos de **población** y **superficie**.
-- **Ordenar** por **nombre**, **población** o **superficie** (asc/desc).
-- Ver **estadísticas**: mayor/menor población, promedios y cantidad de países por continente.
+# TP Integrador — Programación 1  
+### Gestión de Países (Python · App de consola)
 
-> Pensado como trabajo integrador para practicar **listas, diccionarios, funciones, condicionales, archivos CSV y ordenamientos**.
+**Cargar, validar y analizar un CSV de países con búsquedas, filtros, ordenamientos y estadísticas.**
+
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)]()
+[![CLI](https://img.shields.io/badge/Interface-CLI-222)]()
+[![Status](https://img.shields.io/badge/Estado-Listo%20para%20entregar-22c55e)]()
+
+</div>
 
 ---
 
-## ¿Cómo funciona?
-1. **Carga el CSV** (valida columnas, tipos y rangos).
-2. Muestra un **menú** para operar sobre el dataset:
-   - **Buscar** por nombre (no distingue mayúsculas/minúsculas).
+## 🧭 Tabla de contenidos
+- [¿Qué es?](#-qué-es)
+- [Cómo funciona](#-cómo-funciona)
+- [Requisitos](#-requisitos)
+- [Ejecución rápida](#-ejecución-rápida)
+- [Formato del CSV](#-formato-del-csv)
+- [Flujo](#-flujo)
+- [Estructura del proyecto](#-estructura-del-proyecto)
+- [Integrantes](#-integrantes)
+
+---
+
+## 💡 ¿Qué es?
+Aplicación de **consola** hecha en **Python 3** que opera sobre un dataset de países (CSV).  
+Permite **buscar** por nombre, **filtrar** por continente y rangos, **ordenar** por varios criterios y obtener **estadísticas**.
+
+### Funcionalidades (resumen)
+| 🔎 Búsqueda | 🔧 Filtros | ↕ Ordenamiento | 📊 Estadísticas | ✅ Validaciones | 🧪 (Opc.) Tests |
+|---|---|---|---|---|---|
+| Exacta/parcial (case-insensitive) | Continente · Población · Superficie | Nombre · Población · Superficie (asc/desc) | Mayor/menor · Promedios · Conteo por continente | Columnas, tipos y rangos con mensajes claros | `pytest` para lógica y CSV |
+
+---
+
+## ⚙️ Cómo funciona
+1. **Carga el CSV** (valida columnas, tipos y rangos; maneja `utf-8/utf-8-sig`).
+2. Muestra un **menú** de opciones:
+   - **Buscar** por nombre (coincidencia parcial).
    - **Filtrar** por continente y/o por rangos numéricos.
-   - **Ordenar** por el campo elegido, ascendente o descendente.
-   - **Estadísticas** con resultados claros.
-   - **Agregar/actualizar** un país (opcional).
-   - **Guardar cambios** (opcional) o **Salir**.
-3. Los resultados se imprimen en consola con **mensajes claros** (si hay errores o no hay resultados, también te lo avisa).
+   - **Ordenar** por nombre, población o superficie (asc/desc).
+   - **Estadísticas** (mayor/menor, promedios, conteo por continente).
+   - **Agregar/actualizar** país (opcional) y **guardar** (opcional).
+3. Imprime **resultados y mensajes claros** en consola.
 
 ---
 
-## Requisitos
+## 🧩 Requisitos
 - **Python 3.10+**
-- Un archivo CSV con estas columnas (en este orden): nombre,poblacion,superficie,continente
+- Un archivo CSV con encabezados:  
+  `nombre,poblacion,superficie,continente`
 
