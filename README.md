@@ -110,5 +110,5 @@ tp-integrador/
 ---
 
 ## 👥 Integrantes
-- Apellido, Nombre — Legajo  
-- Apellido, Nombre — Legajo
+- Arias, Santino 
+- 
