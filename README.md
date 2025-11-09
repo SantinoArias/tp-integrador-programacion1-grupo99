@@ -31,8 +31,9 @@ Permite **buscar** por nombre, **filtrar** por continente y rangos, **ordenar** 
 
 ### Funcionalidades (resumen)
 | 🔎 Búsqueda | 🔧 Filtros | ↕ Ordenamiento | 📊 Estadísticas | ✅ Validaciones |
-|---|---|---|---|---|---|
-| Exacta/parcial (case-insensitive) | Continente · Población · Superficie | Nombre · Población · Superficie (asc/desc) | Mayor/menor · Promedios · Conteo por continente | Columnas, tipos y rangos con mensajes claros | `
+|---|---|---|---|---|
+| Exacta/parcial (case-insensitive) | Continente · Población · Superficie | Nombre · Población · Superficie (asc/desc) | Mayor/menor · Promedios · Conteo por continente | Columnas, tipos y rangos con mensajes claros |
+
 ---
 
 ## ⚙️ Cómo funciona
@@ -52,3 +53,9 @@ Permite **buscar** por nombre, **filtrar** por continente y rangos, **ordenar** 
 - Un archivo CSV con encabezados:  
   `nombre,poblacion,superficie,continente`
 
+---
+
+## ▶️ Ejecución rápida
+**Windows (PowerShell)**
+```powershell
+python -m src.cli --dataset ".\data\paises.csv"
