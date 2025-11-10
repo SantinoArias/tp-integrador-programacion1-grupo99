@@ -50,7 +50,7 @@ Permite **buscar** por nombre, **filtrar** por continente y rangos, **ordenar** 
      ```bash
      python3 -m src.cli --dataset "./data/paises.csv"
      ```
-4. (Opcional) Si tu CSV viene de Excel con BOM, podés usar `--encoding utf-8-sig`.
+
 
 **Menú principal**
 1) Buscar por nombre (parcial/exacto)  
@@ -126,7 +126,7 @@ Población mínima: abc
 [Error] Ingresá un número entero válido.
 ```
 
-> Nota: Los datos y cantidades son ilustrativos; los resultados reales dependen de tu CSV.
+> Nota: Los datos y cantidades son ilustrativos; los resultados reales dependen del CSV.
 
 ---
 
@@ -148,7 +148,7 @@ python -m src.cli --dataset ".\data\paises.csv"
 python3 -m src.cli --dataset "./data/paises.csv"
 ```
 
-> Si tu CSV viene de Excel con BOM, podés agregar: `--encoding utf-8-sig`.
+
 
 ---
 
