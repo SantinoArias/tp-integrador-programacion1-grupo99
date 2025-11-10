@@ -1,7 +1,7 @@
 <div align="center">
 
 # TECNICATURA UNIVERSITARIA EN PROGRAMACIÓN (A DISTANCIA)
-### 3 — Programación 1  
+### Programación 1  
 # TP Integrador — Gestión de Países (Python · App de consola)
 
 **Cargar, validar y analizar un CSV de países con búsquedas, filtros, ordenamientos y estadísticas.**
