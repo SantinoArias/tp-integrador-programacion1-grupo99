@@ -1,10 +1,10 @@
-# src/core.py
 from __future__ import annotations
 from typing import List, Dict, Optional, TypedDict
 from unicodedata import normalize as _u_norm, combining
 
 # ---------------- Tipos ----------------
 class Pais(TypedDict):
+    # TypedDict para documentar la “forma” de cada país.
     nombre: str
     poblacion: int
     superficie: int
@@ -14,6 +14,8 @@ class Pais(TypedDict):
 def _norm(s: str) -> str:
     """
     Normaliza texto para comparar sin tildes y en minúsculas.
+    Uso NFKD + filtro de marcas diacríticas (combining) y bajo a lower().
+    Esto permite que 'México' y 'mexico' matcheen igual.
     """
     s = _u_norm("NFKD", s)
     s = "".join(ch for ch in s if not combining(ch))
@@ -22,12 +24,14 @@ def _norm(s: str) -> str:
 
 # ---------------- Validaciones básicas ----------------
 def _validar_no_vacio(s: str, campo: str) -> str:
+    # Verifico string no vacío (tras strip). Levanto ValueError con mensaje claro.
     if not s or not s.strip():
         raise ValueError(f"{campo} no puede estar vacío.")
     return s.strip()
 
 
 def _validar_entero_positivo(n: int, campo: str) -> int:
+    # Intento castear a int y exijo n>=0. Mensajes específicos por campo.
     try:
         n = int(n)
     except Exception:
@@ -39,6 +43,7 @@ def _validar_entero_positivo(n: int, campo: str) -> int:
 
 # ---------------- Operaciones ----------------
 def agregar_pais(paises: List[Pais], nombre: str, poblacion: int, superficie: int, continente: str) -> Pais:
+    # Alta “idempotente”: si el país ya existe por nombre normalizado, actualizo valores.
     nombre = _validar_no_vacio(nombre, "Nombre")
     continente = _validar_no_vacio(continente, "Continente")
     poblacion = _validar_entero_positivo(poblacion, "Población")
@@ -69,7 +74,7 @@ def actualizar_pais(
     """
     nombre = _validar_no_vacio(nombre, "Nombre")
     if nueva_poblacion is None and nueva_superficie is None:
-        raise ValueError("Debe indicar al menos un valor a actualizar (población/superficie).")
+        raise ValueError("Debe indicar al menos un valor a actualizar (población/superficie)." )
 
     target = _norm(nombre)
     for p in paises:
@@ -83,6 +88,7 @@ def actualizar_pais(
 
 
 def buscar_por_nombre(paises: List[Pais], patron: str, exacto: bool = False) -> List[Pais]:
+    # Si exacto=True, comparo igualdad; si no, uso “in” para coincidencia parcial.
     patron_n = _norm(_validar_no_vacio(patron, "Patrón de búsqueda"))
     if exacto:
         return [p for p in paises if _norm(p["nombre"]) == patron_n]
@@ -90,6 +96,7 @@ def buscar_por_nombre(paises: List[Pais], patron: str, exacto: bool = False) -> 
 
 
 def filtrar_por_continente(paises: List[Pais], continente: str) -> List[Pais]:
+    # Filtro por continente con normalización (tolerante a mayúsculas/tildes).
     c = _norm(_validar_no_vacio(continente, "Continente"))
     return [p for p in paises if _norm(p["continente"]) == c]
 
@@ -99,6 +106,7 @@ def filtrar_por_rango_poblacion(
     min_p: Optional[int] = None,
     max_p: Optional[int] = None,
 ) -> List[Pais]:
+    # Tolerancia a extremos omitidos (None) para permitir filtros abiertos.
     return [
         p for p in paises
         if (min_p is None or p["poblacion"] >= min_p)
@@ -111,6 +119,7 @@ def filtrar_por_rango_superficie(
     min_s: Optional[int] = None,
     max_s: Optional[int] = None,
 ) -> List[Pais]:
+    # Misma política que población, pero sobre la clave “superficie”.
     return [
         p for p in paises
         if (min_s is None or p["superficie"] >= min_s)
@@ -119,6 +128,7 @@ def filtrar_por_rango_superficie(
 
 
 def ordenar(paises: List[Pais], clave: str, descendente: bool = False) -> List[Pais]:
+    # Valido la clave y aplico sorted(). Para nombre uso _norm para ordenar sin tildes.
     clave = clave.lower().strip()
     if clave not in {"nombre", "poblacion", "superficie"}:
         raise ValueError("Clave inválida. Use: nombre | poblacion | superficie")
@@ -128,6 +138,7 @@ def ordenar(paises: List[Pais], clave: str, descendente: bool = False) -> List[P
 
 
 def estadisticas(paises: List[Pais]) -> Dict[str, object]:
+    # Resumo: cantidad total, mayor/menor población, promedios y conteo por continente.
     n = len(paises)
     if n == 0:
         return {

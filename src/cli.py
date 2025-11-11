@@ -1,17 +1,9 @@
-# ===============================================
-# TP Integrador - Programación 1
-# Módulo: CLI (interfaz de consola)
-# Autor: Santino Arias
-# Nota: Solo agrego COMENTARIOS para explicar decisiones.
-#       No modifiqué ninguna línea de lógica/código existente.
-# ===============================================
-
 from __future__ import annotations
 import argparse
 import sys
 from typing import List, Optional, Tuple
 
-# Importo utilidades de IO (CSV) y el núcleo de negocio.
+# Importo utilidades de IO (CSV).
 # CSVInvalido es mi excepción personalizada para errores de formato.
 from .io_utils import cargar_paises, guardar_paises, CSVInvalido
 from .core import (
